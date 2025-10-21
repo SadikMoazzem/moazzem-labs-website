@@ -37,13 +37,14 @@ const Navigation = () => {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="text-2xl font-bold text-gradient cursor-pointer"
-              onClick={() => scrollToSection('hero')}
-            >
-              Moazzem Labs
-            </motion.div>
+            <Link href="/">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                className="text-2xl font-bold text-gradient cursor-pointer"
+              >
+                Moazzem Labs
+              </motion.div>
+            </Link>
 
             {/* Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
