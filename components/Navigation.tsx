@@ -72,6 +72,11 @@ const Navigation = () => {
               >
                 Contact
               </button>
+              <Link href="/support">
+                <button className="text-white hover:text-gradient transition-colors duration-300">
+                  Support
+                </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -86,21 +91,21 @@ const Navigation = () => {
         </div>
       </motion.nav>
 
-      {/* Floating CTA Button */}
+      {/* Floating CTA Button - Positioned above donation bar */}
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1 }}
-        className="fixed bottom-8 right-8 z-50"
+        className="fixed bottom-24 sm:bottom-28 right-4 sm:right-8 z-50"
       >
         <Link href="/about-me">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="gradient-purple text-white px-6 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
+            className="gradient-purple text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2"
           >
             <User className="w-4 h-4" />
-            <span className="font-medium">About Me</span>
+            <span className="font-medium text-sm sm:text-base">About Me</span>
             <ArrowRight className="w-4 h-4" />
           </motion.button>
         </Link>
