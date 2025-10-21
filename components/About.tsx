@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Heart, Shield, Code, Users } from 'lucide-react';
+import Image from 'next/image';
 
 const About = () => {
   const values = [
@@ -86,7 +87,13 @@ const About = () => {
               <div className="w-80 h-80 mx-auto gradient-cosmic rounded-full flex items-center justify-center">
                 <div className="w-72 h-72 bg-gray-900 rounded-full flex items-center justify-center">
                   <div className="w-64 h-64 gradient-purple rounded-full flex items-center justify-center">
-                    <span className="text-6xl font-bold text-white">SM</span>
+                    <Image
+                      src="/images/moazzem-labs-logo.png"
+                      alt="Moazzem Labs Logo"
+                      width={256}
+                      height={256}
+                      className="w-64 h-64 object-cover rounded-full"
+                    />
                   </div>
                 </div>
               </div>

@@ -61,14 +61,22 @@ const ProjectsGrid = () => {
             >
               {/* Project Header */}
               <div className="flex items-center justify-between mb-4">
-                <div className={`w-12 h-12 ${project.gradient} rounded-xl flex items-center justify-center`}>
+                <div className={`w-12 h-12 ${project.title === 'MyLocalMasjid' || project.title === 'SalahTimez' ? 'bg-transparent' : project.gradient} rounded-xl flex items-center justify-center`}>
                   {project.title === 'MyLocalMasjid' ? (
                     <Image
                       src="/images/mylocalmasjid-logo.png"
                       alt="MyLocalMasjid Logo"
-                      width={24}
-                      height={24}
-                      className="w-6 h-6"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10"
+                    />
+                  ) : project.title === 'SalahTimez' ? (
+                    <Image
+                      src="/images/salahtimez_logo.png"
+                      alt="SalahTimez Logo"
+                      width={40}
+                      height={40}
+                      className="w-10 h-10"
                     />
                   ) : (
                     <project.icon className="w-6 h-6 text-white" />

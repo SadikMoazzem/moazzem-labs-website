@@ -86,7 +86,13 @@ export default function AboutMe() {
                             }}
                       />
                       <div className="w-full h-full bg-white/20 rounded-full flex items-center justify-center" style={{display: 'none'}}>
-                        <User className="w-16 h-16" />
+                        <Image
+                          src="/images/moazzem-labs-logo.png"
+                          alt="Moazzem Labs Logo"
+                          width={64}
+                          height={64}
+                          className="w-16 h-16 object-contain"
+                        />
                       </div>
                     </div>
                     <h3 className="text-2xl font-bold mb-2">Sadik Moazzem</h3>
