@@ -33,6 +33,12 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
   }
+  
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
 @layer utilities {
@@ -65,7 +71,22 @@
   
   .glass-effect {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Hardware acceleration */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Hardware acceleration for gradients */
+  .gradient-cosmic,
+  .gradient-purple,
+  .gradient-blue,
+  .gradient-pink,
+  .gradient-dark {
+    will-change: transform;
+    transform: translateZ(0);
   }
 }
