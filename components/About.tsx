@@ -116,9 +116,9 @@ const About = () => {
         >
           <h3 className="text-3xl font-bold text-white mb-6">Our Mission</h3>
           <blockquote className="text-2xl md:text-3xl text-gray-300 italic leading-relaxed">
-            "At Moazzem Labs, we build innovative technology solutions with unwavering integrity, 
+            &ldquo;At Moazzem Labs, we build innovative technology solutions with unwavering integrity, 
             serving communities through honest, transparent development that honors trust and 
-            empowers rather than exploits."
+            empowers rather than exploits.&rdquo;
           </blockquote>
           <div className="mt-6 text-lg text-gradient font-semibold">
             — Sadik Moazzem, Founder

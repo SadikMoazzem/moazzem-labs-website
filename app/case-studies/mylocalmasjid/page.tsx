@@ -1,5 +1,5 @@
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, ExternalLink, Smartphone, Globe, Users, Star, Code, Database } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Smartphone, Globe, Users, Star, Database } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 

@@ -1,14 +1,25 @@
+'use client';
+
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, Code, Globe, Smartphone, Database, Heart, Shield, Users, Award, MapPin, Mail, Github, Twitter, Linkedin, User } from 'lucide-react';
+import { ArrowLeft, Code, Globe, Smartphone, Database, Heart, Shield, Users, Award, MapPin, Mail, Github, Twitter, Linkedin, User, Calendar, GraduationCap, Trophy } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { useState } from 'react';
 
 export default function AboutMe() {
+  const [activeTab, setActiveTab] = useState('skills');
+
+  const tabs = [
+    { id: 'skills', label: 'Main Skills', icon: Code },
+    { id: 'experience', label: 'Experience', icon: Calendar },
+    { id: 'education', label: 'Education', icon: GraduationCap },
+    { id: 'awards', label: 'Awards', icon: Trophy }
+  ];
+
   return (
     <main className="min-h-screen bg-black text-white">
       <Navigation />
       
-      {/* Header */}
+      {/* Hero Section */}
       <section className="pt-20 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
           <Link 
@@ -21,16 +32,15 @@ export default function AboutMe() {
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
+              <p className="text-lg text-gray-400 mb-4">Welcome to my World</p>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                <span className="text-gradient">Sadik Moazzem</span>
+                Hi, I&apos;m <span className="text-gradient">Sadik Moazzem</span>
               </h1>
-              <p className="text-xl text-gray-300 mb-8">
-                Founder & Developer at Moazzem Labs
-              </p>
+              <h2 className="text-2xl text-gray-300 mb-8">Full Stack Developer</h2>
               <p className="text-lg text-gray-300 mb-8 leading-relaxed">
-                A passionate developer dedicated to building technology that serves communities with integrity. 
-                From creating SalahTimez in 2016 to building the comprehensive MyLocalMasjid ecosystem, 
-                I believe in innovation that respects values and genuinely helps people.
+                I am Sadik Moazzem, an experienced Software Engineer with 5+ years in product-focused development, 
+                specializing in building and evolving SaaS applications using React and Python. I&apos;m passionate 
+                about continuous learning and building community-focused solutions that serve real needs with integrity.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -62,15 +72,15 @@ export default function AboutMe() {
                       <User className="w-16 h-16" />
                     </div>
                     <h3 className="text-2xl font-bold mb-2">Sadik Moazzem</h3>
-                    <p className="text-sm opacity-80">Developer & Founder</p>
+                    <p className="text-sm opacity-80">Full Stack Developer</p>
                     <div className="mt-6 space-y-2">
                       <div className="flex items-center justify-center gap-2">
                         <MapPin className="w-4 h-4" />
                         <span className="text-sm">London, UK</span>
                       </div>
                       <div className="flex items-center justify-center gap-2">
-                        <Award className="w-4 h-4" />
-                        <span className="text-sm">Est. 2016</span>
+                        <Calendar className="w-4 h-4" />
+                        <span className="text-sm">8+ Years Experience</span>
                       </div>
                     </div>
                   </div>
@@ -81,64 +91,241 @@ export default function AboutMe() {
         </div>
       </section>
 
-      {/* My Journey */}
+      {/* About Me Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">My Journey</span>
+            <span className="text-gradient">About Me</span>
           </h2>
           
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="glass-effect rounded-3xl p-8">
+            <p className="text-lg text-gray-300 mb-8 text-center max-w-4xl mx-auto">
+              I am Sadik Moazzem, an experienced Software Engineer with 5+ years in product-focused development, 
+              specializing in building and evolving SaaS applications using React and Python. I founded Moazzem Labs 
+              to build technology that serves communities with integrity, combining my professional expertise with 
+              my passion for community-focused solutions.
+            </p>
+
+            {/* Tabs */}
+            <div className="mb-8">
+              <div className="flex flex-wrap justify-center gap-2 mb-8">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-6 py-3 rounded-full font-medium transition-all duration-300 flex items-center gap-2 ${
+                      activeTab === tab.id
+                        ? 'gradient-purple text-white'
+                        : 'text-gray-400 hover:text-white hover:bg-white/10'
+                    }`}
+                  >
+                    <tab.icon className="w-4 h-4" />
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
+
+              {/* Tab Content */}
+              <div className="min-h-[300px]">
+                {activeTab === 'skills' && (
+                  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {[
+                      { name: 'React', level: 'Expert' },
+                      { name: 'TypeScript', level: 'Expert' },
+                      { name: 'Redux', level: 'Advanced' },
+                      { name: 'Python', level: 'Expert' },
+                      { name: 'Pydantic', level: 'Advanced' },
+                      { name: 'FastAPI', level: 'Advanced' },
+                      { name: 'PostgreSQL', level: 'Advanced' },
+                      { name: 'AWS Lambda', level: 'Advanced' },
+                      { name: 'CI/CD', level: 'Advanced' },
+                      { name: 'GitHub Actions', level: 'Advanced' },
+                      { name: 'SaaS', level: 'Expert' },
+                      { name: 'Database Design', level: 'Advanced' }
+                    ].map((skill) => (
+                      <div key={skill.name} className="glass-effect rounded-xl p-4 text-center">
+                        <h4 className="text-white font-semibold mb-2">{skill.name}</h4>
+                        <p className="text-gray-400 text-sm">{skill.level}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {activeTab === 'experience' && (
+                  <div className="space-y-6">
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">Full Stack Software Engineer</h4>
+                          <p className="text-gray-400">BKwai (London)</p>
+                        </div>
+                        <span className="text-sm text-gray-500">Jun 2020 – Jan 2024</span>
+                      </div>
+                      <p className="text-gray-300 mb-4">
+                        Led the development of React-based B2B SaaS platform from inception to maturity. 
+                        Achieved 87.5% reduction in loading time for large datasets and spearheaded rapid 
+                        product development including live dashboard creation within one week.
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        <li>• Implemented beta features with feature flags and 3D model integration</li>
+                        <li>• Engineered tools for seamless microfrontend collaboration</li>
+                        <li>• Pioneered TypeScript adoption and microfrontend implementation</li>
+                        <li>• Mentored interns and new-starters into independent professionals</li>
+                      </ul>
+                    </div>
+                    
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">Junior Software Engineer</h4>
+                          <p className="text-gray-400">Digital Fineprint (London)</p>
+                        </div>
+                        <span className="text-sm text-gray-500">Nov 2018 – Mar 2020</span>
+                      </div>
+                      <p className="text-gray-300">
+                        Main contributor in developing a React SaaS application with interconnected offerings, 
+                        playing a pivotal role in its success and supporting other team members.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'education' && (
+                  <div className="space-y-6">
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">Apprenticeship Diploma</h4>
+                          <p className="text-gray-400">BCS - Software Development</p>
+                        </div>
+                        <span className="text-sm text-gray-500">Completed</span>
+                      </div>
+                      <p className="text-gray-300">
+                        Professional qualification in software development through apprenticeship program.
+                      </p>
+                    </div>
+                    
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">A-Levels</h4>
+                          <p className="text-gray-400">City & Islington</p>
+                        </div>
+                        <span className="text-sm text-gray-500">Completed</span>
+                      </div>
+                      <p className="text-gray-300">
+                        Computer Science, Electronics, and Mathematics.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {activeTab === 'awards' && (
+                  <div className="space-y-6">
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">87.5% Performance Improvement</h4>
+                          <p className="text-gray-400">Loading Time Optimization</p>
+                        </div>
+                        <span className="text-sm text-gray-500">BKwai</span>
+                      </div>
+                      <p className="text-gray-300">
+                        Reduced loading time for large datasets from 30s to 4s using strategic downsampling, 
+                        ensuring fast data retrieval and improved platform performance.
+                      </p>
+                    </div>
+                    
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">Rapid Product Development</h4>
+                          <p className="text-gray-400">Live Dashboard Creation</p>
+                        </div>
+                        <span className="text-sm text-gray-500">BKwai</span>
+                      </div>
+                      <p className="text-gray-300">
+                        Developed a new live dashboard product in one week, acquiring a new client and 
+                        transitioning the solution to production, adding value to the company&apos;s portfolio.
+                      </p>
+                    </div>
+                    
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">500+ Masajid Served</h4>
+                          <p className="text-gray-400">Community Impact</p>
+                        </div>
+                        <span className="text-sm text-gray-500">MyLocalMasjid</span>
+                      </div>
+                      <p className="text-gray-300">
+                        Successfully serving over 500 masajid across the UK with comprehensive digital solutions, 
+                        demonstrating scalability and community trust.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16">
+            <span className="text-gradient">My Latest Projects</span>
+          </h2>
+          <p className="text-lg text-gray-400 text-center mb-12 max-w-3xl mx-auto">
+            Here are my latest projects that I have been working on. Click on them to learn more.
+          </p>
+
+          <div className="space-y-12">
+            {/* Personal Projects */}
             <div>
-              <h3 className="text-2xl font-bold text-white mb-6">From Idea to Impact</h3>
-              <div className="space-y-6 text-gray-300 leading-relaxed">
-                <p>
-                  My journey started in 2016 with a simple observation: accessing prayer times quickly 
-                  wasn't well-served in the market. This led to creating <strong className="text-white">SalahTimez</strong> - 
-                  a Progressive Web App that prioritized speed and simplicity.
-                </p>
-                <p>
-                  Through SalahTimez, I discovered the real needs of Muslim communities - not just prayer times, 
-                  but comprehensive digital solutions that respect their values. This understanding became 
-                  the foundation for <strong className="text-white">MyLocalMasjid</strong>.
-                </p>
-                <p>
-                  Today, MyLocalMasjid serves hundreds of masajid across the UK with a complete digital ecosystem 
-                  including mobile apps, websites, admin portals, and backend systems - all built with 
-                  privacy-first principles and community-centric design.
-                </p>
-              </div>
-            </div>
-            
-            <div className="glass-effect rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Key Milestones</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-bold">1</span>
+              <h3 className="text-2xl font-bold text-white mb-8">Personal</h3>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="glass-effect rounded-2xl p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center">
+                      <Globe className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-white">SalahTimez</h4>
+                      <p className="text-gray-400">Prayer Times PWA</p>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-white font-medium">2016 - SalahTimez Launch</div>
-                    <div className="text-gray-400 text-sm">Created fast, simple prayer times PWA</div>
-                  </div>
+                  <p className="text-gray-300 mb-6">
+                    The foundation that started Moazzem Labs - a simple, fast prayer times PWA for London communities.
+                  </p>
+                  <Link 
+                    href="/case-studies/salahtimez"
+                    className="gradient-blue text-white px-4 py-2 rounded-lg font-medium inline-block"
+                  >
+                    View Details
+                  </Link>
                 </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-bold">2</span>
+
+                <div className="glass-effect rounded-2xl p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 gradient-purple rounded-xl flex items-center justify-center">
+                      <Smartphone className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-white">MyLocalMasjid</h4>
+                      <p className="text-gray-400">Complete Digital Ecosystem</p>
+                    </div>
                   </div>
-                  <div>
-                    <div className="text-white font-medium">2020 - MyLocalMasjid Launch</div>
-                    <div className="text-gray-400 text-sm">Complete digital ecosystem for masajid</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-sm font-bold">3</span>
-                  </div>
-                  <div>
-                    <div className="text-white font-medium">2024 - 500+ Masajid Served</div>
-                    <div className="text-gray-400 text-sm">Expanding across UK communities</div>
-                  </div>
+                  <p className="text-gray-300 mb-6">
+                    Comprehensive digital ecosystem for masajid including mobile apps, websites, admin portals, and backend systems.
+                  </p>
+                  <Link 
+                    href="/case-studies/mylocalmasjid"
+                    className="gradient-purple text-white px-4 py-2 rounded-lg font-medium inline-block"
+                  >
+                    View Details
+                  </Link>
                 </div>
               </div>
             </div>
@@ -146,126 +333,11 @@ export default function AboutMe() {
         </div>
       </section>
 
-      {/* Skills & Expertise */}
+      {/* Contact Section */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">Skills & Expertise</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="glass-effect rounded-2xl p-6 text-center">
-              <div className="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Mobile Development</h3>
-              <p className="text-gray-400 mb-4">iOS, Android, React Native, PWA</p>
-              <div className="text-sm text-gray-500">Cross-platform mobile apps with native performance</div>
-            </div>
-            
-            <div className="glass-effect rounded-2xl p-6 text-center">
-              <div className="w-16 h-16 gradient-purple rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Globe className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Web Development</h3>
-              <p className="text-gray-400 mb-4">React, Next.js, TypeScript, Tailwind</p>
-              <div className="text-sm text-gray-500">Modern, responsive web applications</div>
-            </div>
-            
-            <div className="glass-effect rounded-2xl p-6 text-center">
-              <div className="w-16 h-16 gradient-pink rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Database className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Backend Development</h3>
-              <p className="text-gray-400 mb-4">Python, Flask, PostgreSQL, REST APIs</p>
-              <div className="text-sm text-gray-500">Scalable backend systems and APIs</div>
-            </div>
-            
-            <div className="glass-effect rounded-2xl p-6 text-center">
-              <div className="w-16 h-16 gradient-blue rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Code className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-xl font-bold text-white mb-3">Full-Stack</h3>
-              <p className="text-gray-400 mb-4">End-to-end development</p>
-              <div className="text-sm text-gray-500">Complete solutions from concept to deployment</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values & Philosophy */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">Values & Philosophy</span>
-          </h2>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="glass-effect rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Core Values</h3>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <Shield className="w-8 h-8 text-green-400 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-xl font-semibold text-white">Privacy-First Design</h4>
-                    <p className="text-gray-300">
-                      Protecting user data and respecting individual privacy is fundamental to everything I build.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Heart className="w-8 h-8 text-red-400 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-xl font-semibold text-white">Community-Centric</h4>
-                    <p className="text-gray-300">
-                      Technology should genuinely serve and empower communities, prioritizing their needs above all.
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Users className="w-8 h-8 text-blue-400 flex-shrink-0" />
-                  <div>
-                    <h4 className="text-xl font-semibold text-white">Integrity & Transparency</h4>
-                    <p className="text-gray-300">
-                      Building with honesty, ensuring transparent practices and ethical development.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="glass-effect rounded-3xl p-8">
-              <h3 className="text-2xl font-bold text-white mb-6">Development Philosophy</h3>
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Innovation with Integrity</h4>
-                  <p className="text-gray-300">
-                    Pushing technological boundaries while maintaining ethical standards and community values.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Simplicity First</h4>
-                  <p className="text-gray-300">
-                    Complex problems deserve simple, elegant solutions that users can understand and trust.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-white mb-2">Long-term Thinking</h4>
-                  <p className="text-gray-300">
-                    Building sustainable solutions that grow with communities and adapt to their evolving needs.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact & Social */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">Let's Connect</span>
+            <span className="text-gradient">Contact Me</span>
           </h2>
           
           <div className="glass-effect rounded-3xl p-8 max-w-4xl mx-auto">
@@ -309,7 +381,7 @@ export default function AboutMe() {
                     Twitter
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/sadikmoazzem"
+                    href="https://www.linkedin.com/in/sadik-moazzem/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"

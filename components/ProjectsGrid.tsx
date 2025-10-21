@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Smartphone, Globe, Code } from 'lucide-react';
+import { ExternalLink, Globe } from 'lucide-react';
 import Image from 'next/image';
 
 const ProjectsGrid = () => {
@@ -137,7 +137,7 @@ const ProjectsGrid = () => {
           <div className="glass-effect rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-white mb-4">More Projects Coming Soon</h3>
             <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-              We're constantly working on new solutions that serve communities with integrity. 
+              We&apos;re constantly working on new solutions that serve communities with integrity. 
               Stay tuned for updates on our latest innovations.
             </p>
             <motion.button

@@ -108,7 +108,7 @@ export default function SalahTimezCaseStudy() {
               <h3 className="text-2xl font-bold text-white mb-6">How It Started</h3>
               <div className="space-y-6 text-gray-300 leading-relaxed">
                 <p>
-                  In 2016, I noticed that accessing prayer times quickly wasn't well-served in the market. 
+                  In 2016, I noticed that accessing prayer times quickly wasn&apos;t well-served in the market. 
                   Most solutions were either too complex or too slow. I wanted to create something simple, 
                   fast, and focused on the core need.
                 </p>
@@ -244,7 +244,7 @@ export default function SalahTimezCaseStudy() {
               <p className="text-lg text-gray-300 max-w-4xl mx-auto">
                 SalahTimez taught us that communities need more than just prayer times. They need comprehensive 
                 digital solutions that respect their values and serve their actual needs. This understanding 
-                became the foundation for MyLocalMasjid's complete ecosystem.
+                became the foundation for MyLocalMasjid&apos;s complete ecosystem.
               </p>
             </div>
           </div>
