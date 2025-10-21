@@ -1,8 +1,9 @@
 'use client';
 
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, Code, Globe, Smartphone, Database, Heart, Shield, Users, Award, MapPin, Mail, Github, Twitter, Linkedin, User, Calendar, GraduationCap, Trophy } from 'lucide-react';
+import { ArrowLeft, Code, Calendar, GraduationCap, Trophy, MapPin, Mail, Github, Twitter, Linkedin, User } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 
 export default function AboutMe() {
@@ -68,8 +69,22 @@ export default function AboutMe() {
               <div className="relative mx-auto w-80 h-[500px] bg-gray-900 rounded-2xl p-4 shadow-2xl">
                 <div className="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl overflow-hidden relative flex items-center justify-center">
                   <div className="text-center text-white">
-                    <div className="w-32 h-32 bg-white/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                      <User className="w-16 h-16" />
+                    <div className="w-32 h-32 bg-white/20 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">
+                      <Image
+                        src="/images/sadik-profile.jpg"
+                        alt="Sadik Moazzem Profile"
+                        width={128}
+                        height={128}
+                        className="w-full h-full object-cover rounded-full"
+                        onError={(e) => {
+                          // Fallback to icon if image fails to load
+                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.nextElementSibling.style.display = 'flex';
+                        }}
+                      />
+                      <div className="w-full h-full bg-white/20 rounded-full flex items-center justify-center" style={{display: 'none'}}>
+                        <User className="w-16 h-16" />
+                      </div>
                     </div>
                     <h3 className="text-2xl font-bold mb-2">Sadik Moazzem</h3>
                     <p className="text-sm opacity-80">Full Stack Developer</p>
@@ -80,7 +95,7 @@ export default function AboutMe() {
                       </div>
                       <div className="flex items-center justify-center gap-2">
                         <Calendar className="w-4 h-4" />
-                        <span className="text-sm">8+ Years Experience</span>
+                        <span className="text-sm">5+ Years Experience</span>
                       </div>
                     </div>
                   </div>
@@ -132,8 +147,9 @@ export default function AboutMe() {
                     {[
                       { name: 'React', level: 'Expert' },
                       { name: 'TypeScript', level: 'Expert' },
-                      { name: 'Redux', level: 'Advanced' },
                       { name: 'Python', level: 'Expert' },
+                      { name: 'AI/ML', level: 'Advanced' },
+                      { name: 'Redux', level: 'Advanced' },
                       { name: 'Pydantic', level: 'Advanced' },
                       { name: 'FastAPI', level: 'Advanced' },
                       { name: 'PostgreSQL', level: 'Advanced' },
@@ -141,7 +157,8 @@ export default function AboutMe() {
                       { name: 'CI/CD', level: 'Advanced' },
                       { name: 'GitHub Actions', level: 'Advanced' },
                       { name: 'SaaS', level: 'Expert' },
-                      { name: 'Database Design', level: 'Advanced' }
+                      { name: 'Database Design', level: 'Advanced' },
+                      { name: 'Responsible AI', level: 'Intermediate' }
                     ].map((skill) => (
                       <div key={skill.name} className="glass-effect rounded-xl p-4 text-center">
                         <h4 className="text-white font-semibold mb-2">{skill.name}</h4>
@@ -153,6 +170,27 @@ export default function AboutMe() {
 
                 {activeTab === 'experience' && (
                   <div className="space-y-6">
+                    <div className="glass-effect rounded-xl p-6">
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <h4 className="text-xl font-bold text-white">Software Engineer</h4>
+                          <p className="text-gray-400">Carpio Tech (London)</p>
+                        </div>
+                        <span className="text-sm text-gray-500">2024 - Present</span>
+                      </div>
+                      <p className="text-gray-300 mb-4">
+                        Working with Carpio Tech, a leading AI consultancy and engineering company, on bespoke AI solutions 
+                        and AI-driven processes. Contributing to their mission of helping organizations go from AI strategy 
+                        to delivering measurable outcomes.
+                      </p>
+                      <ul className="text-gray-300 text-sm space-y-1">
+                        <li>• Developing AI-driven solutions for regulated industries and enterprise clients</li>
+                        <li>• Contributing to Carpio Studio&apos;s ContentOps automation platform</li>
+                        <li>• Building responsible AI systems with governance and evaluation frameworks</li>
+                        <li>• Working on end-to-end AI product development and deployment</li>
+                      </ul>
+                    </div>
+                    
                     <div className="glass-effect rounded-xl p-6">
                       <div className="flex items-start justify-between mb-4">
                         <div>
@@ -175,18 +213,6 @@ export default function AboutMe() {
                     </div>
                     
                     <div className="glass-effect rounded-xl p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h4 className="text-xl font-bold text-white">Junior Software Engineer</h4>
-                          <p className="text-gray-400">Digital Fineprint (London)</p>
-                        </div>
-                        <span className="text-sm text-gray-500">Nov 2018 – Mar 2020</span>
-                      </div>
-                      <p className="text-gray-300">
-                        Main contributor in developing a React SaaS application with interconnected offerings, 
-                        playing a pivotal role in its success and supporting other team members.
-                      </p>
-                    </div>
                   </div>
                 )}
 
@@ -271,67 +297,6 @@ export default function AboutMe() {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            <span className="text-gradient">My Latest Projects</span>
-          </h2>
-          <p className="text-lg text-gray-400 text-center mb-12 max-w-3xl mx-auto">
-            Here are my latest projects that I have been working on. Click on them to learn more.
-          </p>
-
-          <div className="space-y-12">
-            {/* Personal Projects */}
-            <div>
-              <h3 className="text-2xl font-bold text-white mb-8">Personal</h3>
-              <div className="grid md:grid-cols-2 gap-8">
-                <div className="glass-effect rounded-2xl p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 gradient-blue rounded-xl flex items-center justify-center">
-                      <Globe className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-white">SalahTimez</h4>
-                      <p className="text-gray-400">Prayer Times PWA</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-6">
-                    The foundation that started Moazzem Labs - a simple, fast prayer times PWA for London communities.
-                  </p>
-                  <Link 
-                    href="/case-studies/salahtimez"
-                    className="gradient-blue text-white px-4 py-2 rounded-lg font-medium inline-block"
-                  >
-                    View Details
-                  </Link>
-                </div>
-
-                <div className="glass-effect rounded-2xl p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="w-12 h-12 gradient-purple rounded-xl flex items-center justify-center">
-                      <Smartphone className="w-6 h-6 text-white" />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-white">MyLocalMasjid</h4>
-                      <p className="text-gray-400">Complete Digital Ecosystem</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-300 mb-6">
-                    Comprehensive digital ecosystem for masajid including mobile apps, websites, admin portals, and backend systems.
-                  </p>
-                  <Link 
-                    href="/case-studies/mylocalmasjid"
-                    className="gradient-purple text-white px-4 py-2 rounded-lg font-medium inline-block"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section className="py-20 px-6">

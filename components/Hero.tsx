@@ -85,8 +85,7 @@ const Hero = () => {
             transition={{ delay: 0.4, duration: 0.8 }}
             className="text-xl md:text-2xl text-gray-300 mb-8 max-w-4xl mx-auto leading-relaxed"
           >
-            Moazzem Labs builds technology that serves communities through innovative, respectful digital solutions. 
-            Our featured project MyLocalMasjid connects masajid with their communities through a complete digital ecosystem.
+            Moazzem Labs represents my vision of technology that serves communities with integrity. It&apos;s where my professional expertise meets my passion for building solutions that genuinely help people. From SalahTimez&apos; simple beginnings to MyLocalMasjid&apos;s comprehensive ecosystem, every project embodies the principle of innovation with integrity.
           </motion.p>
           
           <motion.div
