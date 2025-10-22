@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation';
 import { ArrowLeft, ExternalLink, Smartphone, Globe, Users, Star, Database } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
+import MyLocalMasjidAppPreview from '@/components/MyLocalMasjidAppPreview';
 
 export default function MyLocalMasjidCaseStudy() {
   return (
@@ -67,16 +68,7 @@ export default function MyLocalMasjidCaseStudy() {
             
             {/* Visual */}
             <div className="relative">
-              <div className="relative mx-auto w-80 h-[600px] bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
-                <div className="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 rounded-[2.5rem] overflow-hidden relative">
-                  <Image
-                    src="/images/mylocalmasjid-app-preview.png"
-                    alt="MyLocalMasjid App Screenshot"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-              </div>
+              <MyLocalMasjidAppPreview />
             </div>
           </div>
         </div>

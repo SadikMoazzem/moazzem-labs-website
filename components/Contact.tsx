@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, MessageCircle, Send } from 'lucide-react';
+import { Mail, Linkedin, Github, MessageCircle, Send, Twitter } from 'lucide-react';
 import { useState } from 'react';
 
 const Contact = () => {
@@ -32,6 +32,12 @@ const Contact = () => {
       icon: Mail,
       href: 'mailto:info@moazzemlabs.com',
       color: 'hover:text-red-400'
+    },
+    {
+      name: 'Twitter',
+      icon: Twitter,
+      href: 'https://twitter.com/MoazzemLabs',
+      color: 'hover:text-blue-400'
     },
     {
       name: 'LinkedIn',

@@ -525,7 +525,7 @@ export default function AboutMe() {
                     GitHub
                   </a>
                   <a
-                    href="https://twitter.com/SadikMozzo"
+                    href="https://twitter.com/MoazzemLabs"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
