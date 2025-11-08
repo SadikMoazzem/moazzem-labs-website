@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Navigation from '@/components/Navigation';
 import { ArrowLeft, Code, Calendar, GraduationCap, MapPin, Mail, Github, Twitter, Linkedin, User, Heart, Globe } from 'lucide-react';
@@ -66,7 +66,7 @@ export default function AboutMe() {
             
             {/* Profile Visual */}
             <div className="relative">
-              <div className="relative mx-auto w-80 h-[500px] bg-gray-900 rounded-2xl p-4 shadow-2xl">
+              <div className="relative mx-auto w-[300px] sm:w-80 h-[500px] bg-gray-900 rounded-2xl p-4 shadow-2xl max-w-[calc(100vw-2rem)]">
                 <div className="w-full h-full bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl overflow-hidden relative flex items-center justify-center">
                   <div className="text-center text-white">
                     <div className="w-32 h-32 bg-white/20 rounded-full mx-auto mb-6 flex items-center justify-center overflow-hidden">

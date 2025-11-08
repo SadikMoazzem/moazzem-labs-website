@@ -29,7 +29,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="py-20 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -84,7 +84,7 @@ const About = () => {
           >
             {/* Profile Image Placeholder */}
             <div className="relative">
-              <div className="w-80 h-80 mx-auto gradient-cosmic rounded-full flex items-center justify-center">
+              <div className="w-64 sm:w-80 h-64 sm:h-80 mx-auto gradient-cosmic rounded-full flex items-center justify-center">
                 <div className="w-72 h-72 bg-gray-900 rounded-full flex items-center justify-center">
                   <div className="w-64 h-64 gradient-purple rounded-full flex items-center justify-center">
                     <Image

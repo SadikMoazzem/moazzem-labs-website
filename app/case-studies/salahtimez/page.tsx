@@ -2,6 +2,10 @@ import Navigation from '@/components/Navigation';
 import { ArrowLeft, ExternalLink, Globe, Code, Database, Zap } from 'lucide-react';
 import Link from 'next/link';
 
+export const metadata = {
+  title: 'SalahTimez — Case Study | Moazzem Labs',
+};
+
 export default function SalahTimezCaseStudy() {
   return (
     <main className="min-h-screen bg-black text-white">
@@ -56,7 +60,7 @@ export default function SalahTimezCaseStudy() {
             
             {/* Visual */}
             <div className="relative">
-              <div className="relative mx-auto w-80 h-[500px] bg-gray-900 rounded-2xl p-4 shadow-2xl">
+              <div className="relative mx-auto w-[300px] sm:w-80 h-[500px] bg-gray-900 rounded-2xl p-4 shadow-2xl max-w-[calc(100vw-2rem)]">
                 <div className="w-full h-full bg-gradient-to-br from-blue-600 to-purple-600 rounded-xl overflow-hidden relative">
                   <div className="p-6 h-full flex flex-col">
                     <div className="text-white text-center mb-6">

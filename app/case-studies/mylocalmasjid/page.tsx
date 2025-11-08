@@ -4,6 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import MyLocalMasjidAppPreview from '@/components/MyLocalMasjidAppPreview';
 
+export const metadata = {
+  title: 'MyLocalMasjid — Case Study | Moazzem Labs',
+};
+
 export default function MyLocalMasjidCaseStudy() {
   return (
     <main className="min-h-screen bg-black text-white">

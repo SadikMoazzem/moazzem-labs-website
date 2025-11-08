@@ -15,7 +15,7 @@ const MyLocalMasjidAppPreview = () => {
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.8, delay: 0.4 }}
         viewport={{ once: true }}
-        className="relative w-80 h-[600px] cursor-pointer"
+        className="relative w-[300px] sm:w-80 h-[600px] cursor-pointer max-w-[calc(100vw-2rem)]"
       >
         {/* Base Phone - Rounded Rectangle */}
         <div className="w-full h-full bg-gradient-to-br from-purple-900/30 via-blue-900/30 to-gray-950 rounded-[3rem] shadow-2xl border border-white/10"></div>
@@ -33,10 +33,10 @@ const MyLocalMasjidAppPreview = () => {
             x: { duration: 2, repeat: Infinity, ease: "easeInOut" },
             opacity: { duration: 0.6 }
           }}
-          className="absolute w-72 h-36 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl left-1/2 -translate-x-1/2 border border-white/20"
+          className="absolute w-[280px] sm:w-72 h-36 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl left-1/2 -translate-x-1/2 border border-white/20"
           style={{ top: '120px' }}
         >
-          <div className="h-full px-6 py-4">
+          <div className="h-full px-4 sm:px-6 py-4">
             {/* Location Header */}
             <div className="flex items-center gap-2 mb-3">
               <div className="text-white/70 text-xs">London, UK</div>
@@ -65,7 +65,7 @@ const MyLocalMasjidAppPreview = () => {
             x: { duration: 3, repeat: Infinity, ease: "easeInOut" },
             opacity: { duration: 0.8, delay: 0.3 }
           }}
-          className="absolute w-72 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl left-1/2 -translate-x-1/2 border border-white/20"
+          className="absolute w-[280px] sm:w-72 bg-white/10 backdrop-blur-md rounded-3xl shadow-2xl left-1/2 -translate-x-1/2 border border-white/20"
           style={{ top: '250px' }}
         >
           <div className="p-4 space-y-2">
@@ -105,7 +105,7 @@ const MyLocalMasjidAppPreview = () => {
             x: { duration: 2.5, repeat: Infinity, ease: "easeInOut" },
             opacity: { duration: 0.9, delay: 0.5 }
           }}
-          className="absolute left-1/2 -translate-x-1/2 w-72 flex items-center justify-between"
+          className="absolute left-1/2 -translate-x-1/2 w-[280px] sm:w-72 flex items-center justify-between"
           style={{ top: '540px' }}
         >
           {/* Nav Bar */}

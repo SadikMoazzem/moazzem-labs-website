@@ -5,6 +5,10 @@ import About from '@/components/About';
 import ProjectsGrid from '@/components/ProjectsGrid';
 import Contact from '@/components/Contact';
 
+export const metadata = {
+  title: 'Moazzem Labs — Innovation with Integrity',
+};
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">

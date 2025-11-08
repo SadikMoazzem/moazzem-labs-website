@@ -29,7 +29,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute top-20 left-20 w-72 h-72 gradient-purple rounded-full opacity-20 blur-3xl"
+          className="absolute top-20 left-0 sm:left-20 w-48 sm:w-72 h-48 sm:h-72 gradient-purple rounded-full opacity-20 blur-3xl"
         />
         
         <motion.div
@@ -43,7 +43,7 @@ const Hero = () => {
             repeat: Infinity,
             ease: "linear"
           }}
-          className="absolute bottom-20 right-20 w-96 h-96 gradient-blue rounded-full opacity-20 blur-3xl"
+          className="absolute bottom-20 right-0 sm:right-20 w-64 sm:w-96 h-64 sm:h-96 gradient-blue rounded-full opacity-20 blur-3xl"
         />
         
         <motion.div
@@ -62,7 +62,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-6xl mx-auto">
+      <div className="relative z-10 text-center px-4 sm:px-6 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -102,7 +102,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToNext()}
-              className="gradient-purple text-white px-8 py-4 rounded-full text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
+              className="gradient-purple text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
             >
               Explore Our Work
             </motion.button>
@@ -111,7 +111,7 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="glass-effect text-white px-8 py-4 rounded-full text-lg font-medium border border-white/20 hover:border-white/40 transition-all duration-300"
+              className="glass-effect text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-base sm:text-lg font-medium border border-white/20 hover:border-white/40 transition-all duration-300"
             >
               Start a Project
             </motion.button>
