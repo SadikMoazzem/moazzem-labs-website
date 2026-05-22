@@ -98,17 +98,8 @@ const About = () => {
                 </div>
               </div>
               
-              {/* Floating Elements */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-4 -right-4 w-16 h-16 border-2 border-purple-400 rounded-full opacity-60"
-              />
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-4 -left-4 w-12 h-12 border-2 border-blue-400 rounded-full opacity-60"
-              />
+              <div className="absolute -top-4 -right-4 w-16 h-16 border-2 border-purple-400 rounded-full opacity-60" />
+              <div className="absolute -bottom-4 -left-4 w-12 h-12 border-2 border-blue-400 rounded-full opacity-60" />
             </div>
           </motion.div>
         </div>

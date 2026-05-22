@@ -13,52 +13,12 @@ const Hero = () => {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Background */}
+      {/* Static gradient background — orbs no longer animate to keep CPU/GPU idle and CWV scores green */}
       <div className="absolute inset-0 gradient-dark">
         <div className="absolute inset-0 bg-black/20"></div>
-        
-        {/* Animated gradient orbs */}
-        <motion.div
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-20 left-0 sm:left-20 w-48 sm:w-72 h-48 sm:h-72 gradient-purple rounded-full opacity-20 blur-3xl"
-        />
-        
-        <motion.div
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute bottom-20 right-0 sm:right-20 w-64 sm:w-96 h-64 sm:h-96 gradient-blue rounded-full opacity-20 blur-3xl"
-        />
-        
-        <motion.div
-          animate={{
-            x: [0, 150, 0],
-            y: [0, -50, 0],
-            scale: [1, 0.8, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-          className="absolute top-1/2 left-1/2 w-64 h-64 gradient-pink rounded-full opacity-15 blur-3xl"
-        />
+        <div className="absolute top-20 left-0 sm:left-20 w-48 sm:w-72 h-48 sm:h-72 gradient-purple rounded-full opacity-20 blur-3xl" />
+        <div className="absolute bottom-20 right-0 sm:right-20 w-64 sm:w-96 h-64 sm:h-96 gradient-blue rounded-full opacity-20 blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 gradient-pink rounded-full opacity-15 blur-3xl" />
       </div>
 
       {/* Content */}
@@ -126,14 +86,13 @@ const Hero = () => {
         transition={{ delay: 1.5 }}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
-        <motion.button
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2, repeat: Infinity }}
+        <button
           onClick={scrollToNext}
-          className="text-white/60 hover:text-white transition-colors duration-300"
+          aria-label="Scroll to next section"
+          className="text-white/60 hover:text-white transition-colors duration-300 animate-bounce motion-reduce:animate-none"
         >
           <ChevronDown className="w-8 h-8" />
-        </motion.button>
+        </button>
       </motion.div>
     </section>
   );

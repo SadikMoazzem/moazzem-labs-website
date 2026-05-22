@@ -1,16 +1,58 @@
+import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import { ArrowLeft, ExternalLink, Smartphone, Globe, Users, Star, Database } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import MyLocalMasjidAppPreview from '@/components/MyLocalMasjidAppPreview';
+import StructuredData from '@/components/StructuredData';
+import { SITE } from '@/lib/site';
+import {
+  breadcrumbSchema,
+  softwareApplicationSchema,
+} from '@/lib/structured-data';
 
-export const metadata = {
-  title: 'MyLocalMasjid — Case Study | Moazzem Labs',
+const title = 'MyLocalMasjid — Case Study';
+const description =
+  'MyLocalMasjid is a complete digital ecosystem for UK masajid — iOS and Android apps, masjid websites, an admin portal and backend, serving 500+ masajid and 10,000+ community members with a 5.0 App Store rating.';
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: '/case-studies/mylocalmasjid' },
+  openGraph: {
+    url: `${SITE.url}/case-studies/mylocalmasjid`,
+    title,
+    description,
+    type: 'article',
+  },
+  twitter: {
+    title,
+    description,
+  },
 };
 
 export default function MyLocalMasjidCaseStudy() {
   return (
     <main className="min-h-screen bg-black text-white">
+      <StructuredData
+        data={[
+          softwareApplicationSchema({
+            name: 'MyLocalMasjid',
+            description,
+            url: 'https://www.mylocalmasjid.com',
+            pagePath: '/case-studies/mylocalmasjid',
+            operatingSystems: ['iOS', 'Android', 'Web'],
+            category: 'LifestyleApplication',
+            rating: { value: 5.0, count: 50 },
+            price: { amount: '0', currency: 'GBP' },
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Case Studies', path: '/case-studies' },
+            { name: 'MyLocalMasjid', path: '/case-studies/mylocalmasjid' },
+          ]),
+        ]}
+      />
       <Navigation />
       
       {/* Header */}

@@ -1,14 +1,55 @@
+import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 import { ArrowLeft, ExternalLink, Globe, Code, Database, Zap } from 'lucide-react';
 import Link from 'next/link';
+import StructuredData from '@/components/StructuredData';
+import { SITE } from '@/lib/site';
+import {
+  breadcrumbSchema,
+  softwareApplicationSchema,
+} from '@/lib/structured-data';
 
-export const metadata = {
-  title: 'SalahTimez — Case Study | Moazzem Labs',
+const title = 'SalahTimez — Case Study';
+const description =
+  'SalahTimez is the prayer-times Progressive Web App that started Moazzem Labs in 2016 — fast, simple, no-download access to salah times for London communities, built with React and Python.';
+
+export const metadata: Metadata = {
+  title,
+  description,
+  alternates: { canonical: '/case-studies/salahtimez' },
+  openGraph: {
+    url: `${SITE.url}/case-studies/salahtimez`,
+    title,
+    description,
+    type: 'article',
+  },
+  twitter: {
+    title,
+    description,
+  },
 };
 
 export default function SalahTimezCaseStudy() {
   return (
     <main className="min-h-screen bg-black text-white">
+      <StructuredData
+        data={[
+          softwareApplicationSchema({
+            name: 'SalahTimez',
+            description,
+            url: 'https://www.salahtimez.com',
+            pagePath: '/case-studies/salahtimez',
+            operatingSystems: ['Web'],
+            category: 'LifestyleApplication',
+            price: { amount: '0', currency: 'GBP' },
+          }),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Case Studies', path: '/case-studies' },
+            { name: 'SalahTimez', path: '/case-studies/salahtimez' },
+          ]),
+        ]}
+      />
       <Navigation />
       
       {/* Header */}
