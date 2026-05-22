@@ -2,143 +2,105 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, User } from 'lucide-react';
+import { ArrowRight, Menu, X } from 'lucide-react';
 import Link from 'next/link';
+
+const links = [
+  { label: 'Work', href: '/work' },
+  { label: 'About', href: '/about' },
+  { label: 'Support', href: '/support' },
+  { label: 'Contact', href: '/contact' },
+];
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 24);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false); // Close menu after clicking
-  };
-
   return (
     <>
-      {/* Main Navigation */}
       <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'glass-effect' : 'bg-transparent'
+        initial={{ y: -32, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.4 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+          isScrolled
+            ? 'bg-parchment/85 backdrop-blur-md border-b border-hairline'
+            : 'bg-transparent'
         }`}
+        style={isScrolled ? { borderBottomColor: 'var(--color-hairline)' } : undefined}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3.5">
           <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-gradient cursor-pointer"
-              >
+            <Link href="/" className="flex items-center gap-2 group">
+              <div className="w-9 h-9 rounded-xl bg-primary text-parchment flex items-center justify-center font-bold text-lg shadow-sm">
+                M
+              </div>
+              <span className="text-lg font-bold text-ink tracking-tight">
                 Moazzem Labs
-              </motion.div>
+              </span>
             </Link>
 
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/#hero" className="text-white hover:text-gradient transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/#about" className="text-white hover:text-gradient transition-colors duration-300">
-                About
-              </Link>
-              <Link href="/#projects" className="text-white hover:text-gradient transition-colors duration-300">
-                Projects
-              </Link>
-              <Link href="/#contact" className="text-white hover:text-gradient transition-colors duration-300">
-                Contact
-              </Link>
-              <Link href="/support" className="text-white hover:text-gradient transition-colors duration-300">
-                Support
+            <div className="hidden md:flex items-center gap-1">
+              {links.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="px-4 py-2 text-sm font-medium text-ink-muted hover:text-ink hover:bg-primary-soft rounded-full transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+              <Link href="/contact" className="btn-primary ml-2 px-4 py-2 text-sm">
+                Get in touch <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-              >
-                {isMobileMenuOpen ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </button>
-            </div>
+            <button
+              onClick={() => setIsMobileMenuOpen((v) => !v)}
+              aria-label="Toggle menu"
+              className="md:hidden p-2 text-ink hover:bg-primary-soft rounded-lg transition-colors"
+            >
+              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-effect border-t border-white/10"
+            className="md:hidden bg-parchment border-t border-hairline"
+            style={{ borderTopColor: 'var(--color-hairline)' }}
           >
-            <div className="px-4 sm:px-6 py-4 space-y-4">
-              <Link href="/#hero" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Home
-              </Link>
-              <Link href="/#about" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                About
-              </Link>
-              <Link href="/#projects" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Projects
-              </Link>
-              <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Contact
-              </Link>
-              <Link href="/support" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Support
-              </Link>
-              <Link href="/about-me" onClick={() => setIsMobileMenuOpen(false)} className="gradient-purple text-white px-6 py-3 rounded-full font-medium w-full flex items-center justify-center gap-2 mt-4">
-                <User className="w-4 h-4" />
-                About Me
+            <div className="px-4 sm:px-6 py-4 space-y-1">
+              {links.map((l) => (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-base font-medium text-ink hover:bg-primary-soft rounded-lg transition-colors"
+                >
+                  {l.label}
+                </Link>
+              ))}
+              <Link
+                href="/contact"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="btn-primary w-full mt-3"
+              >
+                Get in touch <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </motion.div>
         )}
       </motion.nav>
-
-      {/* Floating CTA Button - Positioned above donation bar */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1 }}
-        className="fixed bottom-24 sm:bottom-28 right-2 sm:right-4 md:right-8 z-50 max-w-[calc(100vw-1rem)]"
-      >
-        <Link href="/about-me">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="gradient-purple text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 text-xs sm:text-sm md:text-base"
-          >
-            <User className="w-4 h-4" />
-            <span className="font-medium text-xs sm:text-sm md:text-base whitespace-nowrap">About Me</span>
-            <ArrowRight className="w-4 h-4" />
-          </motion.button>
-        </Link>
-      </motion.div>
     </>
   );
 };

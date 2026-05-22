@@ -1,35 +1,42 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --radius: 0.5rem;
-  }
+@theme {
+  --color-parchment: #F6F2EA;
+  --color-cream: #F4E9C8;
+  --color-surface: #FFFFFF;
+  --color-surface-dark: #0B0F12;
+  --color-primary: #0E8A78;
+  --color-primary-dark: #0A6F60;
+  --color-primary-soft: #D7ECE6;
+  --color-mustard: #8A7A2A;
+  --color-mustard-soft: #F4E9C8;
+  --color-rose: #B43C5C;
+  --color-rose-soft: #F6D7DF;
+  --color-skyblue: #2D5C9E;
+  --color-skyblue-soft: #DCE7F4;
+  --color-ink: #0F1414;
+  --color-ink-muted: #566066;
+  --color-ink-subtle: #8A949A;
+  --color-hairline: #E6E0D4;
 }
 
 @layer base {
-  /* Make sizing predictable and prevent accidental overflow */
+  :root {
+    --background: 36 35% 94%;            /* parchment */
+    --foreground: 195 13% 7%;            /* ink */
+    --card: 0 0% 100%;
+    --card-foreground: 195 13% 7%;
+    --muted: 36 25% 90%;
+    --muted-foreground: 200 7% 38%;
+    --primary: 171 81% 30%;              /* teal */
+    --primary-foreground: 36 35% 96%;
+    --border: 38 38% 87%;                /* hairline */
+    --radius: 1rem;
+  }
+
   *, *::before, *::after {
     box-sizing: border-box;
-    border-color: hsl(var(--border));
+    border-color: var(--color-hairline);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -43,79 +50,223 @@
   body {
     width: 100%;
     min-height: 100%;
-    background-color: hsl(var(--background));
-    color: hsl(var(--foreground));
+    background-color: var(--color-parchment);
+    color: var(--color-ink);
     overflow-x: hidden;
     position: relative;
+    font-feature-settings: "ss01", "cv11";
   }
 
-  #__next {
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-    position: relative;
-  }
-
-  /* Ensure all sections respect viewport width */
   section {
     max-width: 100vw;
     overflow-x: hidden;
   }
 
-  /* Make media scale down instead of overflowing */
   img, video, svg {
     max-width: 100%;
     height: auto;
     display: block;
   }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-parchment);
+  }
+
+  /* Legacy text-color cascade — most existing components assume a dark theme
+     and use text-white / text-gray-*. On the new parchment shell those become
+     invisible. Re-map to the ink scale here so all existing markup stays
+     readable without touching every file. Inside dark canvases the original
+     values are restored via the .dark-canvas selectors below. */
+  .text-white { color: var(--color-ink); }
+  .text-gray-200,
+  .text-gray-300 { color: var(--color-ink); }
+  .text-gray-400 { color: var(--color-ink-muted); }
+  .text-gray-500 { color: var(--color-ink-subtle); }
+
+  /* Inside an explicit dark canvas, preserve the light text colours */
+  .dark-canvas .text-white,
+  .surface-dark .text-white,
+  .bg-surface-dark .text-white { color: #FFFFFF; }
+  .dark-canvas .text-gray-200,
+  .surface-dark .text-gray-200,
+  .bg-surface-dark .text-gray-200 { color: rgba(255,255,255,0.86); }
+  .dark-canvas .text-gray-300,
+  .surface-dark .text-gray-300,
+  .bg-surface-dark .text-gray-300 { color: rgba(255,255,255,0.78); }
+  .dark-canvas .text-gray-400,
+  .surface-dark .text-gray-400,
+  .bg-surface-dark .text-gray-400 { color: rgba(255,255,255,0.60); }
+  .dark-canvas .text-gray-500,
+  .surface-dark .text-gray-500,
+  .bg-surface-dark .text-gray-500 { color: rgba(255,255,255,0.48); }
+
+  /* Page wrappers that still have bg-black should not actually paint pure
+     black — keep them parchment instead. dark-canvas opts into dark on demand. */
+  main.bg-black { background-color: var(--color-parchment); color: var(--color-ink); }
+  section.bg-gray-900,
+  section.bg-gray-950,
+  .bg-gray-900:not(.dark-canvas):not(.surface-dark),
+  .bg-gray-950:not(.dark-canvas):not(.surface-dark) {
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+  }
 }
 
 @layer utilities {
-  .gradient-cosmic {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
+  /* Surfaces */
+  .bg-parchment { background-color: var(--color-parchment); }
+  .bg-cream { background-color: var(--color-cream); }
+  .bg-surface { background-color: var(--color-surface); }
+  .bg-surface-dark { background-color: var(--color-surface-dark); }
+  .bg-primary-soft { background-color: var(--color-primary-soft); }
+
+  /* Brand colours */
+  .text-primary { color: var(--color-primary); }
+  .text-primary-dark { color: var(--color-primary-dark); }
+  .text-mustard { color: var(--color-mustard); }
+  .text-ink { color: var(--color-ink); }
+  .text-ink-muted { color: var(--color-ink-muted); }
+  .text-ink-subtle { color: var(--color-ink-subtle); }
+  .bg-primary { background-color: var(--color-primary); }
+
+  /* Card / surface system */
+  .surface-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-hairline);
+    border-radius: 1.25rem;
+    box-shadow:
+      0 1px 2px rgba(15, 20, 20, 0.04),
+      0 8px 24px rgba(15, 20, 20, 0.04);
   }
-  
-  .gradient-dark {
-    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+  .surface-cream {
+    background-color: var(--color-cream);
+    border: 1px solid rgba(138, 122, 42, 0.18);
+    border-radius: 1.25rem;
   }
-  
+  .surface-dark {
+    background-color: var(--color-surface-dark);
+    color: #F6F2EA;
+    border-radius: 1.5rem;
+  }
+
+  /* Chips */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.375rem 0.875rem;
+    border-radius: 9999px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-dark);
+  }
+  .chip-mustard { background-color: #FBF1D6; color: var(--color-mustard); }
+  .chip-rose { background-color: var(--color-rose-soft); color: var(--color-rose); }
+  .chip-blue { background-color: var(--color-skyblue-soft); color: var(--color-skyblue); }
+  .chip-neutral { background-color: #EDE7DA; color: var(--color-ink-muted); }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    background-color: var(--color-primary);
+    color: var(--color-parchment);
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-1px);
+  }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    border: 1px solid var(--color-hairline);
+    font-weight: 500;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+  }
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-1px);
+  }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+  .btn-ghost:hover { color: var(--color-primary-dark); }
+
+  /* Decorative — calligraphy watermark (used sparingly) */
+  .watermark-calligraphy {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><text x='50%' y='55%' text-anchor='middle' font-family='serif' font-size='180' fill='%238A7A2A' fill-opacity='0.08'>%D8%AC%D9%85%D8%B9%D8%A9</text></svg>");
+    background-repeat: no-repeat;
+    background-position: right -30px top -20px;
+    background-size: 220px;
+  }
+
+  /* Legacy aliases — keep the existing component class names working but remap
+     to the new palette. Existing usages stop being purple/pink/blue gradients
+     and become flat brand-aligned blocks. */
   .gradient-purple {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-color: var(--color-primary);
+    color: var(--color-parchment);
   }
-  
   .gradient-blue {
-    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    background-color: var(--color-skyblue);
+    color: var(--color-parchment);
   }
-  
   .gradient-pink {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background-color: var(--color-rose);
+    color: var(--color-parchment);
   }
-  
+  .gradient-cosmic {
+    background:
+      radial-gradient(at top right, var(--color-primary-soft), transparent 50%),
+      radial-gradient(at bottom left, var(--color-cream), transparent 50%),
+      var(--color-parchment);
+  }
+  .gradient-dark {
+    background-color: var(--color-surface-dark);
+    color: #F6F2EA;
+  }
   .text-gradient {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #4facfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--color-primary);
+    background: none;
+    -webkit-text-fill-color: var(--color-primary);
   }
-  
   .glass-effect {
-    background: rgba(255, 255, 255, 0.05);
+    background-color: var(--color-surface);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid var(--color-hairline);
+    box-shadow:
+      0 1px 2px rgba(15, 20, 20, 0.04),
+      0 8px 24px rgba(15, 20, 20, 0.04);
+    color: var(--color-ink);
+  }
+  /* When glass-effect appears inside a dark canvas, restore the translucent look */
+  .surface-dark .glass-effect,
+  .bg-surface-dark .glass-effect,
+  .dark-canvas .glass-effect {
+    background-color: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Hardware acceleration */
-    will-change: transform;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
-  
-  /* Hardware acceleration for gradients */
-  .gradient-cosmic,
-  .gradient-purple,
-  .gradient-blue,
-  .gradient-pink,
-  .gradient-dark {
-    will-change: transform;
-    transform: translateZ(0);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+    color: #F6F2EA;
   }
 }

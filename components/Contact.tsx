@@ -61,24 +61,8 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6">
+    <section id="contact" className="py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            <span className="text-gradient">Learn More</span>
-          </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Discover more about Moazzem Labs and our MyLocalMasjid ecosystem. 
-            Learn about our journey building technology that serves communities with integrity.
-          </p>
-        </motion.div>
-
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Form */}
           <motion.div
@@ -212,20 +196,6 @@ const Contact = () => {
           </motion.div>
         </div>
 
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-20 text-center border-t border-white/10 pt-8"
-        >
-          <div className="text-gray-400">
-            <p className="text-lg font-medium text-gradient mb-2">Moazzem Labs</p>
-            <p className="text-sm">Innovation with Integrity</p>
-            <p className="text-xs mt-4">© {new Date().getFullYear()} Moazzem Labs. All rights reserved.</p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

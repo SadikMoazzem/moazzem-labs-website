@@ -1,9 +1,9 @@
 "use client";
 
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { motion } from 'framer-motion';
-import { Heart, Server, Code, Smartphone, Globe, DollarSign, ExternalLink, Shield, Users, Sparkles } from 'lucide-react';
-import Link from 'next/link';
+import { Heart, Server, Code, Smartphone, Globe, Shield, Users, Sparkles } from 'lucide-react';
 
 export default function SupportPage() {
   // Recurring monthly subscriptions
@@ -410,37 +410,7 @@ export default function SupportPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="py-12 px-6 bg-gray-950 border-t border-white/10">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-center md:text-left">
-              <Link href="/">
-                <div className="text-2xl font-bold text-gradient mb-2 cursor-pointer">
-                  Moazzem Labs
-                </div>
-              </Link>
-              <p className="text-gray-400">Innovation with Integrity</p>
-            </div>
-            
-            <div className="flex flex-wrap justify-center gap-6">
-              <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-                Home
-              </Link>
-              <Link href="/about-me" className="text-gray-400 hover:text-white transition-colors">
-                About Me
-              </Link>
-              <Link href="/support" className="text-gray-400 hover:text-white transition-colors">
-                Support
-              </Link>
-            </div>
-          </div>
-          
-          <div className="mt-8 pt-8 border-t border-white/10 text-center text-gray-400">
-            <p>&copy; {new Date().getFullYear()} Moazzem Labs. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
