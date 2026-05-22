@@ -1,13 +1,14 @@
 "use client";
 
 import Navigation from '@/components/Navigation';
-import { ArrowLeft, Code, Calendar, GraduationCap, MapPin, Mail, Github, Twitter, Linkedin, User, Heart, Globe } from 'lucide-react';
+import Footer from '@/components/Footer';
+import { ArrowLeft, Code, Calendar, GraduationCap, MapPin, Mail, Github, Twitter, Linkedin, Heart, Globe } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function AboutMe() {
+export default function AboutSadik() {
   const [activeTab, setActiveTab] = useState('skills');
 
   const tabs = [
@@ -23,12 +24,12 @@ export default function AboutMe() {
       {/* Hero Section */}
       <section className="pt-20 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <Link 
-            href="/" 
-            className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 text-ink-muted hover:text-primary transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Portfolio
+            Back to studio
           </Link>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -446,7 +447,7 @@ export default function AboutMe() {
                   technology that respects their values and serves their actual needs, not just functional requirements.
                 </p>
                 <Link 
-                  href="/case-studies/salahtimez"
+                  href="/work/salahtimez"
                   className="gradient-blue text-white px-4 py-2 rounded-lg font-medium inline-block hover:scale-105 transition-transform"
                 >
                   Learn More
@@ -475,7 +476,7 @@ export default function AboutMe() {
                   Moazzem Labs—technology that serves communities with integrity, privacy-first design, and genuine value.
                 </p>
                 <Link 
-                  href="/case-studies/mylocalmasjid"
+                  href="/work/mylocalmasjid"
                   className="gradient-purple text-white px-4 py-2 rounded-lg font-medium inline-block hover:scale-105 transition-transform"
                 >
                   Learn More
@@ -549,13 +550,7 @@ export default function AboutMe() {
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="py-12 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-400 mb-4">© {new Date().getFullYear()} Moazzem Labs. All rights reserved.</p>
-          <p className="text-sm text-gray-500">Innovation with Integrity</p>
-        </div>
-      </section>
+      <Footer />
     </main>
   );
 }

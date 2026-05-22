@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
+import Footer from '@/components/Footer';
 import { ArrowLeft, ExternalLink, Globe, Code, Database, Zap } from 'lucide-react';
 import Link from 'next/link';
 import StructuredData from '@/components/StructuredData';
@@ -16,9 +17,9 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: '/case-studies/salahtimez' },
+  alternates: { canonical: '/work/salahtimez' },
   openGraph: {
-    url: `${SITE.url}/case-studies/salahtimez`,
+    url: `${SITE.url}/work/salahtimez`,
     title,
     description,
     type: 'article',
@@ -38,15 +39,15 @@ export default function SalahTimezCaseStudy() {
             name: 'SalahTimez',
             description,
             url: 'https://www.salahtimez.com',
-            pagePath: '/case-studies/salahtimez',
+            pagePath: '/work/salahtimez',
             operatingSystems: ['Web'],
             category: 'LifestyleApplication',
             price: { amount: '0', currency: 'GBP' },
           }),
           breadcrumbSchema([
             { name: 'Home', path: '/' },
-            { name: 'Case Studies', path: '/case-studies' },
-            { name: 'SalahTimez', path: '/case-studies/salahtimez' },
+            { name: 'Work', path: '/work' },
+            { name: 'SalahTimez', path: '/work/salahtimez' },
           ]),
         ]}
       />
@@ -55,12 +56,12 @@ export default function SalahTimezCaseStudy() {
       {/* Header */}
       <section className="pt-20 pb-12 px-6">
         <div className="max-w-7xl mx-auto">
-          <Link 
-            href="/" 
+          <Link
+            href="/work"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to Portfolio
+            Back to all work
           </Link>
           
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -296,13 +297,7 @@ export default function SalahTimezCaseStudy() {
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="py-12 px-6 border-t border-white/10">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-gray-400 mb-4">© {new Date().getFullYear()} Moazzem Labs. All rights reserved.</p>
-          <p className="text-sm text-gray-500">Innovation with Integrity</p>
-        </div>
-      </section>
+      <Footer />
     </main>
   );
 }

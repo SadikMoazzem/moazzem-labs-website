@@ -8,9 +8,9 @@ const description =
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: '/about-me' },
+  alternates: { canonical: '/about/sadik' },
   openGraph: {
-    url: `${SITE.url}/about-me`,
+    url: `${SITE.url}/about/sadik`,
     title,
     description,
     type: 'profile',
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutMeLayout({
+export default function AboutSadikLayout({
   children,
 }: {
   children: React.ReactNode;
