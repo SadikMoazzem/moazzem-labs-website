@@ -1,7 +1,7 @@
 # Moazzem Labs website redesign
 
 Goal: Rebuild moazzemlabs.com as the home of the lab: who we are, what we make, how it is funded, with one clear ask (support).
-By: not set (Sadik to give a date)
+By: 2026-11-19
 Project: Moazzem Labs website
 
 Design canvas (private until shared): https://claude.ai/artifact/LhxSufTnUEmQK8LoQjTKyY
@@ -30,6 +30,9 @@ purple-gradient template that does not look related to anything the lab makes.
 | Support tiers | Six amounts only (£2, £5, £10 monthly; £5, £10, £25 once). Tier names dropped | Named tiers; custom amount |
 | Cost figures | None published. Funding is explained in words | Real monthly figures; proportions |
 | About Me | Stays at `/about-me`, stand-alone, first person, not in the nav, no donation prompts | Separate domain; a normal nav page |
+| App previews | Real app screens in phone frames, the way mylocalmasjid.com shows them (`PhoneFrame`, screenshots from `public/images/screenshots/1.3.0/` in the mylocalmasjid repo) | Placeholder art; a hand-drawn mock phone |
+| "In the lab" card | Left out for now | A placeholder card |
+| Contact email | hello@sadikmoazzem.com, in the footer and on `/about-me` | |
 | Client work | No "Start a project" form | Keeping the enquiry form |
 | Promise copy | Softened, lab-wide wording (see canvas, "The promise") | "No adverts. Ever."; "No account needed"; "every decision is made by people who pray…" |
 
@@ -39,7 +42,7 @@ Nav: Work · About · Funding · **Support** (button).
 
 Home (`/`), one scroll:
 1. Hero: headline, one line, buttons "Explore the work" and "Who we are".
-2. Our work: My Local Masjid (flagship card), SalahTimez, one "In the lab" slot per new project.
+2. Our work: My Local Masjid (flagship card, with app screens in phone frames), SalahTimez. No "In the lab" card for now; a new project gets a card when it is ready to show.
 3. The promise: four plain statements.
 4. Who we are: short story from SalahTimez (2016) to now; Sadik named; one quiet link to `/about-me`.
 5. How it is funded: three things support pays for, then the ask.
@@ -83,16 +86,16 @@ Removed: floating donation bar, floating About Me button, "Start a project" form
 |---|---|---|---|---|
 | [ ] | 1 | 0 | - | Replace the colour and gradient utilities in `app/globals.css` with the tokens above; load Instrument Serif and Inter with `next/font` |
 | [ ] | 2 | 0 | 1 | New `Navigation`: glass pill, Work / About / Funding / Support; phone version with Support button and a menu button (44px targets) |
-| [ ] | 3 | 0 | 1 | New `Footer`: email address, LinkedIn, GitHub, mylocalmasjid.com. Confirm whether the Twitter link stays |
+| [ ] | 3 | 0 | 1 | New `Footer`: hello@sadikmoazzem.com, LinkedIn, GitHub, mylocalmasjid.com. Confirm whether the Twitter link stays |
 | [ ] | 4 | 0 | - | Remove `FloatingDonationBar` from `app/layout.tsx` and the floating About Me button from `Navigation` |
 | [ ] | 5 | 1 | 1,2 | `Hero`: CSS ring, headline, buttons; reduced-motion fallback; phone layout as on the canvas |
-| [ ] | 6 | 1 | 1 | `OurWork` section driven by one `projects` data file, so adding a project is one entry |
+| [ ] | 6 | 1 | 1 | `OurWork` section driven by one `projects` data file, so adding a project is one entry. Port `PhoneFrame` and copy `prayer-screen.jpg` and `map.jpg` for the flagship card |
 | [ ] | 7 | 1 | 1 | `Promise` section, four statements, wording from the canvas |
 | [ ] | 8 | 1 | 1 | `WhoWeAre` section with the Sadik card and link to `/about-me` |
 | [ ] | 9 | 1 | 1 | `Funding` section, no figures, link to `/support` |
 | [ ] | 10 | 1 | 5-9 | Compose `app/page.tsx`; delete `About`, `Contact`, `FeaturedProject`, `ProjectsGrid` once unused |
 | [ ] | 11 | 2 | 1,2 | `/support`: six amount buttons on the existing Stripe links; "what it pays for" list |
-| [ ] | 12 | 2 | 6 | `/work/mylocalmasjid`: rewrite with current facts; real screenshots of app, watch, widget, masjid site |
+| [ ] | 12 | 2 | 6 | `/work/mylocalmasjid`: rewrite with current facts; three phone frames (`map.jpg`, `prayer-screen.jpg`, `my-masjid.jpg`) as on the canvas. No published numbers until Sadik confirms them |
 | [ ] | 13 | 2 | 6 | `/work/salahtimez`: restyle and trim |
 | [ ] | 14 | 2 | 12,13 | Permanent redirects from `/case-studies/mylocalmasjid` and `/case-studies/salahtimez` in `next.config.ts` |
 | [ ] | 15 | 2 | 1 | `/about-me`: stand-alone layout and header, first person, no Labs nav, no donation prompts; URL unchanged |
@@ -103,13 +106,13 @@ Removed: floating donation bar, floating About Me button, "Start a project" form
 
 ## Open questions for Sadik
 
-1. A target date for the goal.
-2. The "In the lab" card: name and one line for the next project, or leave the slot out until there is one.
-3. Facts for the My Local Masjid case study: which numbers are safe to publish (directory size, ratings), and screenshots.
-4. Confirm the softened promise lines as final wording, especially "we collect as little as we can".
-5. Contact email address for the footer and for `/about-me`.
-6. Does SalahTimez still run, and should its case study say so?
-7. Keep or drop the Twitter link.
+1. Which My Local Masjid numbers are safe to publish (directory size, ratings). Until answered, the case study carries none.
+2. Confirm the softened promise lines as final wording, especially "we collect as little as we can".
+3. Does SalahTimez still run, and should its case study say so?
+4. Keep or drop the Twitter link.
+
+Answered 2026-11-19: target date (today), "In the lab" card (leave out), app previews (same
+as mylocalmasjid.com), contact email (hello@sadikmoazzem.com).
 
 ## Not in this plan
 
