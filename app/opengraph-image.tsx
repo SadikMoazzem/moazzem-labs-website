@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { MARK_PATH } from "@/components/Logo";
 
 export const alt = "Moazzem Labs — Built for the ummah, not for the algorithm";
 export const size = { width: 1200, height: 630 };
@@ -19,7 +20,12 @@ export default function OpengraphImage() {
           background: "radial-gradient(ellipse at 50% 110%, #0d2440 0%, #05080f 55%, #000000 100%)",
         }}
       >
-        <div style={{ fontSize: 30, fontWeight: 600 }}>Moazzem Labs</div>
+        <div style={{ display: "flex", alignItems: "center", fontSize: 32, fontWeight: 700 }}>
+          <svg width="44" height="44" viewBox="0 0 100 100" style={{ marginRight: 16 }}>
+            <path fill="#a9dcff" d={MARK_PATH} />
+          </svg>
+          Moazzem Labs
+        </div>
         <div style={{ display: "flex", flexDirection: "column", fontSize: 92, lineHeight: 1.02, letterSpacing: -2 }}>
           <div style={{ display: "flex" }}>
             Built for the <span style={{ color: "#a9dcff", marginLeft: 22 }}>ummah,</span>

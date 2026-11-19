@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Lockup } from "@/components/Logo";
 import { CONTACT_EMAIL, LINKS } from "@/lib/site";
 
 export default function Footer() {
@@ -6,7 +7,7 @@ export default function Footer() {
     <footer className="border-t border-white/15 bg-black px-5 py-12 sm:px-14">
       <div className="mx-auto flex max-w-[1168px] flex-col gap-10 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-3">
-          <div className="font-serif text-3xl">Moazzem Labs</div>
+          <Lockup markSize={34} markClassName="text-ice" className="text-[26px]" />
           <p className="m-0 max-w-sm text-[15px] leading-relaxed text-mist">
             Built for the ummah, not for the algorithm.
           </p>

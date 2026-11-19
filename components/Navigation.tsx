@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { Lockup } from "@/components/Logo";
 
 const LINKS = [
   { href: "/#work", label: "Work" },
@@ -16,10 +17,10 @@ export default function Navigation() {
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:pt-6">
       <nav
         aria-label="Main"
-        className="glass-nav mx-auto flex w-full max-w-[560px] items-center justify-between rounded-full py-1.5 pl-5 pr-1.5 sm:pl-6"
+        className="glass-nav mx-auto flex w-full max-w-[560px] items-center justify-between rounded-full py-1.5 pl-4 pr-1.5 sm:pl-5"
       >
-        <Link href="/" className="text-[15px] font-semibold text-white no-underline">
-          Moazzem Labs
+        <Link href="/" aria-label="Moazzem Labs, home" className="flex items-center text-white no-underline">
+          <Lockup markSize={22} markClassName="text-ice" className="text-[16px]" />
         </Link>
         <div className="flex items-center gap-1.5 sm:gap-7">
           {LINKS.map((l) => (
