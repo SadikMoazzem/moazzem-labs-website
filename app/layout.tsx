@@ -1,41 +1,43 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
-import FloatingDonationBar from "@/components/FloatingDonationBar";
 
-const inter = Inter({
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const instrument = Instrument_Serif({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument",
 });
 
 export const metadata: Metadata = {
-  title: "Moazzem Labs - Innovation with Integrity",
-  description: "Building technology that serves communities through innovative, respectful digital solutions. Specializing in mobile apps, web platforms, and privacy-first design.",
-  keywords: ["Moazzem Labs", "Innovation with Integrity", "Mobile App Development", "Web Development", "Community Technology", "Privacy-First Design"],
-  authors: [{ name: "Sadik Moazzem" }],
-  creator: "Sadik Moazzem",
-  openGraph: {
-    title: "Moazzem Labs - Innovation with Integrity",
-    description: "Building technology that serves communities through innovative, respectful digital solutions.",
-    type: "website",
-    locale: "en_US",
+  metadataBase: new URL("https://www.moazzemlabs.com"),
+  title: {
+    default: "Moazzem Labs — Built for the ummah, not for the algorithm",
+    template: "%s — Moazzem Labs",
   },
-  viewport: 'width=device-width, initial-scale=1',
+  description:
+    "Moazzem Labs is a small community technology lab. We build software for Muslim communities that respects the people using it, including My Local Masjid.",
+  authors: [{ name: "Sadik Moazzem" }],
+  openGraph: {
+    title: "Moazzem Labs",
+    description: "Built for the ummah, not for the algorithm.",
+    type: "website",
+    locale: "en_GB",
+    siteName: "Moazzem Labs",
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#05080f",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} font-sans antialiased`}
-      >
-        {children}
-        <FloatingDonationBar />
-      </body>
+    <html lang="en-GB" className={`${inter.variable} ${instrument.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

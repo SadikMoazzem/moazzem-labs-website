@@ -5,7 +5,7 @@ By: 2026-11-19
 Project: Moazzem Labs website
 
 Design canvas (private until shared): https://claude.ai/artifact/LhxSufTnUEmQK8LoQjTKyY
-Status: plan only. No site code has been changed.
+Status: tickets 1–18 built on branch `ccr-92363b96-dsainh` (2026-11-19), not merged. Ticket 19 (giving options on mylocalmasjid.com) not started.
 
 ## Why
 
@@ -84,24 +84,24 @@ Removed: floating donation bar, floating About Me button, "Start a project" form
 
 | Status | ID | Phase | Deps | Description |
 |---|---|---|---|---|
-| [ ] | 1 | 0 | - | Replace the colour and gradient utilities in `app/globals.css` with the tokens above; load Instrument Serif and Inter with `next/font` |
-| [ ] | 2 | 0 | 1 | New `Navigation`: glass pill, Work / About / Funding / Support; phone version with Support button and a menu button (44px targets) |
-| [ ] | 3 | 0 | 1 | New `Footer`: hello@sadikmoazzem.com, LinkedIn, GitHub, mylocalmasjid.com. Confirm whether the Twitter link stays |
-| [ ] | 4 | 0 | - | Remove `FloatingDonationBar` from `app/layout.tsx` and the floating About Me button from `Navigation` |
-| [ ] | 5 | 1 | 1,2 | `Hero`: CSS ring, headline, buttons; reduced-motion fallback; phone layout as on the canvas |
-| [ ] | 6 | 1 | 1 | `OurWork` section driven by one `projects` data file, so adding a project is one entry. Port `PhoneFrame` and copy `prayer-screen.jpg` and `map.jpg` for the flagship card |
-| [ ] | 7 | 1 | 1 | `Promise` section, four statements, wording from the canvas |
-| [ ] | 8 | 1 | 1 | `WhoWeAre` section with the Sadik card and link to `/about-me` |
-| [ ] | 9 | 1 | 1 | `Funding` section, no figures, link to `/support` |
-| [ ] | 10 | 1 | 5-9 | Compose `app/page.tsx`; delete `About`, `Contact`, `FeaturedProject`, `ProjectsGrid` once unused |
-| [ ] | 11 | 2 | 1,2 | `/support`: six amount buttons on the existing Stripe links; "what it pays for" list |
-| [ ] | 12 | 2 | 6 | `/work/mylocalmasjid`: rewrite with current facts; three phone frames (`map.jpg`, `prayer-screen.jpg`, `my-masjid.jpg`) as on the canvas. No published numbers until Sadik confirms them |
-| [ ] | 13 | 2 | 6 | `/work/salahtimez`: restyle and trim |
-| [ ] | 14 | 2 | 12,13 | Permanent redirects from `/case-studies/mylocalmasjid` and `/case-studies/salahtimez` in `next.config.ts` |
-| [ ] | 15 | 2 | 1 | `/about-me`: stand-alone layout and header, first person, no Labs nav, no donation prompts; URL unchanged |
-| [ ] | 16 | 3 | 10 | Metadata: title, description, `en_GB` locale, move `viewport` to its own export, Open Graph image in the new style |
-| [ ] | 17 | 3 | all | Accessibility pass: contrast, focus states, keyboard nav, reduced motion |
-| [ ] | 18 | 3 | all | Performance pass on a phone: check the blurred ring does not drop frames; simplify if it does |
+| [x] | 1 | 0 | - | Replace the colour and gradient utilities in `app/globals.css` with the tokens above; load Instrument Serif and Inter with `next/font` |
+| [x] | 2 | 0 | 1 | New `Navigation`: glass pill, Work / About / Funding / Support; phone version with Support button and a menu button (44px targets) |
+| [x] | 3 | 0 | 1 | New `Footer`: hello@sadikmoazzem.com, LinkedIn, GitHub, mylocalmasjid.com. Confirm whether the Twitter link stays |
+| [x] | 4 | 0 | - | Remove `FloatingDonationBar` from `app/layout.tsx` and the floating About Me button from `Navigation` |
+| [x] | 5 | 1 | 1,2 | `Hero`: CSS ring, headline, buttons; reduced-motion fallback; phone layout as on the canvas |
+| [x] | 6 | 1 | 1 | `OurWork` section driven by one `projects` data file, so adding a project is one entry. Port `PhoneFrame` and copy `prayer-screen.jpg` and `map.jpg` for the flagship card |
+| [x] | 7 | 1 | 1 | `Promise` section, four statements, wording from the canvas |
+| [x] | 8 | 1 | 1 | `WhoWeAre` section with the Sadik card and link to `/about-me` |
+| [x] | 9 | 1 | 1 | `Funding` section, no figures, link to `/support` |
+| [x] | 10 | 1 | 5-9 | Compose `app/page.tsx`; delete `About`, `Contact`, `FeaturedProject`, `ProjectsGrid` once unused |
+| [x] | 11 | 2 | 1,2 | `/support`: six amount buttons on the existing Stripe links; "what it pays for" list |
+| [x] | 12 | 2 | 6 | `/work/mylocalmasjid`: rewrite with current facts; three phone frames (`map.jpg`, `prayer-screen.jpg`, `my-masjid.jpg`) as on the canvas. No published numbers until Sadik confirms them |
+| [x] | 13 | 2 | 6 | `/work/salahtimez`: restyle and trim |
+| [x] | 14 | 2 | 12,13 | Permanent redirects from `/case-studies/mylocalmasjid` and `/case-studies/salahtimez` in `next.config.ts` |
+| [x] | 15 | 2 | 1 | `/about-me`: stand-alone layout and header, first person, no Labs nav, no donation prompts; URL unchanged |
+| [x] | 16 | 3 | 10 | Metadata: title, description, `en_GB` locale, move `viewport` to its own export, Open Graph image in the new style |
+| [x] | 17 | 3 | all | Accessibility pass: contrast, focus states, keyboard nav, reduced motion |
+| [x] | 18 | 3 | all | Performance pass on a phone: check the blurred ring does not drop frames; simplify if it does |
 | [ ] | 19 | 3 | 11 | Mirror the six giving options on mylocalmasjid.com (separate PR in that repo, its own design language) |
 
 ## Open questions for Sadik
