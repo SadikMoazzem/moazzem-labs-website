@@ -1,146 +1,70 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, User } from 'lucide-react';
-import Link from 'next/link';
+import Link from "next/link";
+import { useState } from "react";
 
-const Navigation = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const LINKS = [
+  { href: "/#work", label: "Work" },
+  { href: "/#about", label: "About" },
+  { href: "/#funding", label: "Funding" },
+];
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-    setIsMobileMenuOpen(false); // Close menu after clicking
-  };
+export default function Navigation() {
+  const [open, setOpen] = useState(false);
 
   return (
-    <>
-      {/* Main Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'glass-effect' : 'bg-transparent'
-        }`}
+    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:pt-6">
+      <nav
+        aria-label="Main"
+        className="glass-nav mx-auto flex w-full max-w-[560px] items-center justify-between rounded-full py-1.5 pl-5 pr-1.5 sm:pl-6"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/">
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="text-2xl font-bold text-gradient cursor-pointer"
-              >
-                Moazzem Labs
-              </motion.div>
-            </Link>
-
-            {/* Navigation Links */}
-            <div className="hidden md:flex items-center space-x-8">
-              <Link href="/#hero" className="text-white hover:text-gradient transition-colors duration-300">
-                Home
-              </Link>
-              <Link href="/#about" className="text-white hover:text-gradient transition-colors duration-300">
-                About
-              </Link>
-              <Link href="/#projects" className="text-white hover:text-gradient transition-colors duration-300">
-                Projects
-              </Link>
-              <Link href="/#contact" className="text-white hover:text-gradient transition-colors duration-300">
-                Contact
-              </Link>
-              <Link href="/support" className="text-white hover:text-gradient transition-colors duration-300">
-                Support
-              </Link>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <div className="md:hidden">
-              <button 
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-white p-2 hover:bg-white/10 rounded-lg transition-colors"
-              >
-                {isMobileMenuOpen ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-effect border-t border-white/10"
-          >
-            <div className="px-4 sm:px-6 py-4 space-y-4">
-              <Link href="/#hero" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Home
-              </Link>
-              <Link href="/#about" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                About
-              </Link>
-              <Link href="/#projects" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Projects
-              </Link>
-              <Link href="/#contact" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Contact
-              </Link>
-              <Link href="/support" onClick={() => setIsMobileMenuOpen(false)} className="block w-full text-left text-white hover:text-gradient transition-colors duration-300 py-2">
-                Support
-              </Link>
-              <Link href="/about-me" onClick={() => setIsMobileMenuOpen(false)} className="gradient-purple text-white px-6 py-3 rounded-full font-medium w-full flex items-center justify-center gap-2 mt-4">
-                <User className="w-4 h-4" />
-                About Me
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </motion.nav>
-
-      {/* Floating CTA Button - Positioned above donation bar */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1 }}
-        className="fixed bottom-24 sm:bottom-28 right-2 sm:right-4 md:right-8 z-50 max-w-[calc(100vw-1rem)]"
-      >
-        <Link href="/about-me">
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="gradient-purple text-white px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center space-x-2 text-xs sm:text-sm md:text-base"
-          >
-            <User className="w-4 h-4" />
-            <span className="font-medium text-xs sm:text-sm md:text-base whitespace-nowrap">About Me</span>
-            <ArrowRight className="w-4 h-4" />
-          </motion.button>
+        <Link href="/" className="text-[15px] font-semibold text-white no-underline">
+          Moazzem Labs
         </Link>
-      </motion.div>
-    </>
+        <div className="flex items-center gap-1.5 sm:gap-7">
+          {LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className="hidden text-sm text-white/85 no-underline hover:text-white sm:inline"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link href="/support" className="btn btn-solid !min-h-11 !px-5 !text-sm">
+            Support
+          </Link>
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 bg-white/5 sm:hidden"
+          >
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2" strokeLinecap="round">
+              {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 8h16M4 16h16" />}
+            </svg>
+          </button>
+        </div>
+      </nav>
+      {open && (
+        <div
+          id="mobile-menu"
+          className="glass-nav mx-auto mt-2 flex w-full max-w-[560px] flex-col rounded-3xl p-2 sm:hidden"
+        >
+          {LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
+              className="rounded-2xl px-4 py-3.5 text-base text-white no-underline hover:bg-white/10"
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </header>
   );
-};
-
-export default Navigation;
+}
