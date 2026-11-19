@@ -20,6 +20,8 @@ standard clichés for anything called "Labs".
 | `lockup-stacked-black.svg`, `lockup-stacked-white.svg` | Mark above the name |
 | `app-icon.svg`, `app-icon-180.png`, `app-icon-512.png` | Full-bleed square: black mark on ice blue |
 | `icon-rounded.svg` | Rounded tile with a larger mark, for favicons and small sizes |
+| `social/twitter-profile-800.png` | Square profile picture for X/Twitter (the mark stays inside the circle crop) |
+| `social/twitter-header-1500x500.png` | X/Twitter header; text is kept clear of the profile picture at bottom left |
 
 On the site: `components/Logo.tsx` (`Mark`, `Lockup`), `app/icon.svg`, `app/favicon.ico`,
 `app/apple-icon.png`. To regenerate, change the path in `components/Logo.tsx` and the files
